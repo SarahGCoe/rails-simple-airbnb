@@ -1,0 +1,44 @@
+ <p id="notice"><%= notice %></p>
+
+ <div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our flats</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>You searched for</p>
+    </div>
+  </div>
+  <div class="row"></div>
+
+
+  <div class="card-group">
+    <% @flats.each do |flat| %>
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+       <!--  <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap"> -->
+       <div class="card-body text-center">
+        <h5 class="card-title"><%= flat.name %> </h5>
+        <p class="card-body"><%= flat.address %> </p>
+        <div class="text-container d-flex justify-content-between">
+          <p class="card-text"><i class="fas fa-users"></i><%= flat.number_of_guests %> </p>
+          <p class="card-text"><i class="fas fa-euro-sign"></i><%= flat.price_per_night %> </p>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Show', flat %>
+          <%= link_to 'Edit', edit_flat_path(flat), class:"ml-3 text-yellow" %>
+          <%= link_to 'Destroy', flat, method: :delete, data: { confirm: 'Are you sure?' }, class:"ml-3 text-red"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+ <!--  <img src="https://source.unsplash.com/random" alt="Card image cap">
+
+  <br>
+-->
+<%= link_to 'New Flat', new_flat_path %>
+</div>
